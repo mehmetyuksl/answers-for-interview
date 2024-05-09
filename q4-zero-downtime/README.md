@@ -1,6 +1,7 @@
 ZERO DOWNTIME için Kubernetes üzerinde birçok strateji ve yöntem bulunmaktadır. Bazı stratejiler için aşağıda örnekler verilmiştir. Bunlar:
 1)	Rolling Updates: Bu strateji, yeni bir sürümün eski sürümle yavaşça değiştirilmesini sağlar. Bu şekilde, kullanıcılar hala hizmeti kullanabilirken, güncelleme aşamalı olarak gerçekleşir. Bu stratejiyi kullanarak, her zaman en az bir pod çalışır durumda olur ve kesinti yaşanmaz.
- ![image](https://github.com/mehmetyuksl/answers-for-interview/assets/10564346/89429c27-7ebf-4cf2-90cf-3f12d56867cb)
+
+     ![image](https://github.com/mehmetyuksl/answers-for-interview/assets/10564346/89429c27-7ebf-4cf2-90cf-3f12d56867cb)
 
 2)	Readiness ve Liveness Probes: Readiness probesi, bir pod'un hizmete hazır olup olmadığını kontrol eder. Yani, bir uygulamayı ayağa kaldırdığımız zaman hemen hizmet vermeye başlayamayabilir. Bazı gereksinimleri indirmesi ya da farklı bir sebep ile ayağa kalktıktan belirli bir sonra hizmete başlayabilir. Bu gibi durumlarda pod’ların artık hizmet vermeye hazır olduğunu Readiness Probes aracılığı ile anlayabiliriz.
 
