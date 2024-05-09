@@ -1,0 +1,14 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cleanup-evicted-pods
+spec:
+  schedule: "0 * * * *"  # Her saat başı çalışacak şekilde ayarlanmıştır
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: cleanup-evicted-pods
+            image: registry-url/cleanup-evicted-pods
+          restartPolicy: OnFailure
