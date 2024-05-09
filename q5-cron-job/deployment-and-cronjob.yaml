@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-service
+spec:
+  replicas: 20  # Servisin 20 kopyası olacak şekilde replica sayısını belirtiyoruz
+  selector:
+    matchLabels:
+      app: my-service
+  template:
+    metadata:
+      labels:
+        app: my-service
+    spec:
+      containers:
+      - name: my-service
+        image: image:tag
+        env:
+        - name: CRON
+          value: "true"  # CRON environment variable'ını true olarak ayarlıyoruz
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: my-cronjob
+spec:
+  schedule: "0 * * * *"  # Her saat başında çalışacak şekilde bir schedule belirliyoruz
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: cronjob
+            image: cronjob-image:tag
+            env:
+            - name: CRON
+              value: "true"  # CRON environment variable'ını true olarak ayarlıyoruz
+          restartPolicy: OnFailure
+          nodeSelector:  # Sadece bir pod üzerinde çalışması için nodeSelector kullanıyoruz
+            <node-label-key>: <node-label-value>
